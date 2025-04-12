@@ -1,4 +1,4 @@
-# Open Source Semantic Layer Generator: From Power BI to Databricks Notebooks with DAX → PySpark
+# Semantic Layer Generator: From Power BI to Databricks Notebooks with DAX → PySpark
 
 This open-source project enables semantic modeling directly in Databricks based on your Power BI datasets.
 
