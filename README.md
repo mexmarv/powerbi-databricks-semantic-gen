@@ -4,13 +4,31 @@ This open-source project enables semantic modeling directly in Databricks based 
 
 ## Key Features
 
-- Extracts tables, relationships, and DAX measures from Power BI via REST API
-- Auto-generates:
-  - SQL views for base and joined tables
-  - PySpark translations of DAX measures (SUM, CALCULATE, FILTER, DIVIDE, etc.)
-  - Optional Delta materialized tables (`materialize = True`)
-- Adds editable blocks to define business rules (semantic logic)
-- Designed for use within Databricks Notebooks
+- Automated View Generation: Creates SQL views for all base tables from your Power BI dataset
+- DAX to PySpark Translation: Converts Power BI DAX measures into equivalent PySpark code--
+-- Aggregate Functions:
+-- Basic (SUM, COUNT, AVERAGE, MIN, MAX)
+-- Statistical (VAR.P, STDEV.P)
+- Distinct aggregations (DISTINCTCOUNT)
+-- Time Intelligence Functions:
+-- Period comparisons (DATEADD, SAMEPERIODLASTYEAR)
+-- Year-to-date (DATESYTD, DATESMTD, DATESQTD)
+-- Period navigation (PREVIOUSMONTH, PREVIOUSYEAR)
+- Text Functions:
+-- String operations (CONCATENATE, UPPER, LOWER)
+-- Text manipulation (LEN, TRIM, SUBSTITUTE)
+- Logical Functions:
+-- Conditional (IF, SWITCH)
+-- Boolean operations (AND, OR, NOT)
+- Mathematical Functions:
+-- Basic math (ABS, ROUND, FLOOR, CEILING)
+-- Advanced calculations (POWER, SQRT)
+- Filter Functions:
+-- Context modification (CALCULATE, FILTER)
+-- Table operations (ALL, ALLEXCEPT)
+- Window Functions:
+-- Rankings (RANKX, TOPN)
+-- First/Last values (FIRSTNONBLANK, LASTNONBLANK)
 
 ## Example Use Case
 
