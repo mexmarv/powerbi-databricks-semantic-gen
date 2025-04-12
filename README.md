@@ -7,28 +7,28 @@ This open-source project enables semantic modeling directly in Databricks based 
 - Automated View Generation: Creates SQL views for all base tables from your Power BI dataset
 - DAX to PySpark Translation: Converts Power BI DAX measures into equivalent PySpark code
 - Aggregate Functions:
--- Basic (SUM, COUNT, AVERAGE, MIN, MAX)
--- Statistical (VAR.P, STDEV.P)
--- Distinct aggregations (DISTINCTCOUNT)
+ - Basic (SUM, COUNT, AVERAGE, MIN, MAX)
+ - Statistical (VAR.P, STDEV.P)
+ - Distinct aggregations (DISTINCTCOUNT)
 - Time Intelligence Functions:
--- Period comparisons (DATEADD, SAMEPERIODLASTYEAR)
--- Year-to-date (DATESYTD, DATESMTD, DATESQTD)
--- Period navigation (PREVIOUSMONTH, PREVIOUSYEAR)
+ - Period comparisons (DATEADD, SAMEPERIODLASTYEAR)
+ - Year-to-date (DATESYTD, DATESMTD, DATESQTD)
+ - Period navigation (PREVIOUSMONTH, PREVIOUSYEAR)
 - Text Functions:
--- String operations (CONCATENATE, UPPER, LOWER)
--- Text manipulation (LEN, TRIM, SUBSTITUTE)
+ - String operations (CONCATENATE, UPPER, LOWER)
+ - Text manipulation (LEN, TRIM, SUBSTITUTE)
 - Logical Functions:
--- Conditional (IF, SWITCH)
--- Boolean operations (AND, OR, NOT)
+ - Conditional (IF, SWITCH)
+ - Boolean operations (AND, OR, NOT)
 - Mathematical Functions:
--- Basic math (ABS, ROUND, FLOOR, CEILING)
--- Advanced calculations (POWER, SQRT)
+ - Basic math (ABS, ROUND, FLOOR, CEILING)
+ - Advanced calculations (POWER, SQRT)
 - Filter Functions:
--- Context modification (CALCULATE, FILTER)
--- Table operations (ALL, ALLEXCEPT)
+ - Context modification (CALCULATE, FILTER)
+ - Table operations (ALL, ALLEXCEPT)
 - Window Functions:
--- Rankings (RANKX, TOPN)
--- First/Last values (FIRSTNONBLANK, LASTNONBLANK)
+ - Rankings (RANKX, TOPN)
+ - First/Last values (FIRSTNONBLANK, LASTNONBLANK)
 
 ## Example Use Case
 
