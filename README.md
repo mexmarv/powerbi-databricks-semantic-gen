@@ -5,12 +5,12 @@ This open-source project enables semantic modeling directly in Databricks based 
 ## Key Features
 
 - Automated View Generation: Creates SQL views for all base tables from your Power BI dataset
-- DAX to PySpark Translation: Converts Power BI DAX measures into equivalent PySpark code--
--- Aggregate Functions:
+- DAX to PySpark Translation: Converts Power BI DAX measures into equivalent PySpark code
+- Aggregate Functions:
 -- Basic (SUM, COUNT, AVERAGE, MIN, MAX)
 -- Statistical (VAR.P, STDEV.P)
-- Distinct aggregations (DISTINCTCOUNT)
--- Time Intelligence Functions:
+-- Distinct aggregations (DISTINCTCOUNT)
+- Time Intelligence Functions:
 -- Period comparisons (DATEADD, SAMEPERIODLASTYEAR)
 -- Year-to-date (DATESYTD, DATESMTD, DATESQTD)
 -- Period navigation (PREVIOUSMONTH, PREVIOUSYEAR)
