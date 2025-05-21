@@ -1,0 +1,79 @@
+{
+  "model": {
+    "tables": [
+      {
+        "name": "Sales",
+        "columns": [
+          {"name": "SaleID", "dataType": "Int64"},
+          {"name": "ProductID", "dataType": "Int64"},
+          {"name": "CustomerID", "dataType": "Int64"},
+          {"name": "Date", "dataType": "DateTime"},
+          {"name": "Quantity", "dataType": "Int64"},
+          {"name": "UnitPrice", "dataType": "Double"},
+          {"name": "Total", "isCalculated": true, "expression": "[Quantity] * [UnitPrice]"},
+          {"name": "Year", "isCalculated": true, "expression": "YEAR([Date])"}
+        ],
+        "measures": [
+          {"name": "Total Sales", "expression": "SUM([Total])"},
+          {"name": "Average Sale", "expression": "AVERAGE([Total])"},
+          {"name": "Distinct Customers", "expression": "DISTINCTCOUNT([CustomerID])"},
+          {"name": "Sales Last Year", "expression": "CALCULATE(SUM([Total]), SAMEPERIODLASTYEAR([Date]))"},
+          {"name": "High Value Sale", "expression": "IF([Total] > 1000, 1, 0)"},
+          {"name": "Sales Growth", "expression": "DIVIDE(SUM([Total]) - [Sales Last Year], [Sales Last Year])"},
+          {"name": "Text Example", "expression": "CONCATENATE('Total: ', [Total])"},
+          {"name": "Filtered Sales", "expression": "CALCULATE(SUM([Total]), FILTER(Sales, [Total] > 500))"},
+          {"name": "Complex Var Example", "expression": "VAR x = SUM([Total]) RETURN x * 2"}
+        ],
+        "hierarchies": [
+          {
+            "name": "Date Hierarchy",
+            "levels": [
+              {"name": "Year"},
+              {"name": "Month"},
+              {"name": "Day"}
+            ]
+          }
+        ]
+      },
+      {
+        "name": "Product",
+        "columns": [
+          {"name": "ProductID", "dataType": "Int64"},
+          {"name": "ProductName", "dataType": "String"},
+          {"name": "Category", "dataType": "String"},
+          {"name": "Price", "dataType": "Double"}
+        ],
+        "measures": [
+          {"name": "Product Count", "expression": "COUNT([ProductID])"}
+        ]
+      },
+      {
+        "name": "Customer",
+        "columns": [
+          {"name": "CustomerID", "dataType": "Int64"},
+          {"name": "CustomerName", "dataType": "String"},
+          {"name": "Region", "dataType": "String"}
+        ],
+        "measures": [
+          {"name": "Customer Count", "expression": "COUNT([CustomerID])"}
+        ]
+      }
+    ],
+    "relationships": [
+      {
+        "fromTable": "Sales",
+        "fromColumn": "ProductID",
+        "toTable": "Product",
+        "toColumn": "ProductID",
+        "crossFilteringBehavior": "Both"
+      },
+      {
+        "fromTable": "Sales",
+        "fromColumn": "CustomerID",
+        "toTable": "Customer",
+        "toColumn": "CustomerID",
+        "crossFilteringBehavior": "Both"
+      }
+    ]
+  }
+}
