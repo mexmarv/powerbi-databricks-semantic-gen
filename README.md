@@ -10,6 +10,66 @@ This project provides a notebook that automatically extracts the semantic model 
 - Optionally materializes metrics and dimensions as Databricks SQL views
 - Outputs a Databricks-importable notebook
 
+## Supported DAX Functions and Mappings
+
+The notebook currently maps the following DAX functions to Databricks SQL or PySpark equivalents:
+
+**Aggregation Functions (SQL):**
+
+- `SUM` → `SUM()`
+- `AVERAGE` → `AVG()`
+- `COUNT` → `COUNT()`
+- `DISTINCTCOUNT` → `COUNT(DISTINCT ...)`
+- `MIN` → `MIN()`
+- `MAX` → `MAX()`
+
+**Logical Functions (SQL):**
+
+- `IF` → `CASE WHEN ... THEN ... ELSE ... END`
+- `AND` → `(... AND ...)`
+- `OR` → `(... OR ...)`
+- `NOT` → `NOT (...)`
+
+**Date Functions (SQL):**
+
+- `YEAR` → `EXTRACT(YEAR FROM ...)`
+- `MONTH` → `EXTRACT(MONTH FROM ...)`
+- `DAY` → `EXTRACT(DAY FROM ...)`
+- `QUARTER` → `EXTRACT(QUARTER FROM ...)`
+
+**Text Functions (SQL):**
+
+- `CONCATENATE` → `CONCAT(..., ...)`
+- `LEFT` → `SUBSTRING(..., 1, ...)`
+- `RIGHT` → `SUBSTRING(..., -...)`
+- `LEN` → `LENGTH(...)`
+
+**Filter Context Functions (SQL):**
+
+- `CALCULATE` → `... FILTER BY ...`
+- `FILTER` → `... WHERE ...`
+
+**Time Intelligence Functions (SQL):**
+
+- `SAMEPERIODLASTYEAR` → `DATE_SUB(..., INTERVAL 1 YEAR)`
+- `DATEADD` → `DATE_ADD(..., INTERVAL ... ...)`
+- `DATEDIFF` → `DATEDIFF(..., ..., ...)`
+
+**Relationship Functions:**
+
+- `RELATED` → column reference
+- `LOOKUPVALUE` → comment for manual implementation
+
+**Other:**
+
+- Table[Column] references are mapped to `table.column`
+- Simple `VAR ... RETURN ...` blocks are commented for manual review
+
+**PySpark Fallback:**
+
+- If a DAX function or pattern is not supported in SQL, a comment is inserted in the generated notebook indicating that PySpark implementation is required.
+- Examples: `GENERATE`, `SUMMARIZE`, `ADDCOLUMNS`, `SELECTCOLUMNS`, `UNION`, `INTERSECT`, `EXCEPT`, `EARLIER`, `PATH`, `PATHITEM` and other advanced DAX patterns.
+
 ## How to Export the Semantic Model from Power BI Desktop
 
 1. Open your report in Power BI Desktop.
